@@ -1,0 +1,106 @@
+﻿@model Rocosa_Udemy.Models.ViewModels.ProductoVM
+
+@{
+    var titulo = "Crear nuevo Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    @* Un if que permite ver si se esta recibiendo el id. Si se recibe es porque la acción la ejecutó el botón editar, caso contrario la acción la ejecutó el boton crear *@
+    @if (Model.Producto.Id != 0)
+    {
+        titulo = "Editar nuevo producto";
+        <input asp-for="Producto.Id" hidden />
+    }
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <h2 class="text-info">@titulo</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.NombreProducto">Nombre Producto</label>
+                            <input asp-for="Producto.NombreProducto" class="form-control">
+                            <span asp-validation-for="Producto.NombreProducto" class="text-danger"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.Precio">Precio</label>
+                            <input asp-for="Producto.Precio" class="form-control">
+                            <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.DescripcionCorta">Descripción Corta</label>
+                            <input asp-for="Producto.DescripcionCorta" class="form-control">
+                            <span asp-validation-for="Producto.DescripcionCorta" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.DescripcionProducto">Descripción del producto</label>
+                            <input asp-for="Producto.DescripcionProducto" class="form-control">
+                            <span asp-validation-for="Producto.DescripcionProducto" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.ImagenUrl" class="form-label">Imagen</label>
+                            <input type="file" name="files" id="imagenId" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.CategoriaId" class="form-label">Categoria</label>
+                            <select asp-for="Producto.CategoriaId" asp-items="@Model.CategoriaLista" class="form-select">
+                                <option disabled selected>--Seleccione una categoría</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Producto.TipoAplicacionId" class="form-label">Tipo Aplicación</label>
+                            <select asp-for="Producto.TipoAplicacionId" asp-items="@Model.TipoAplicacionLista" class="form-select">
+                                <option disabled selected>--Seleccione un tipo de aplicación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br /> 
+
+                    <div class="d-grid gap-2 d-md-block">
+                        @if (Model.Producto.Id != 0)
+                        {
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary">Crear nuevo</button>
+                        }
+                        <a asp-controller="Producto" asp-action="Index" class="btn btn-success">Volver</a>
+                    </div>                  
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</form>
+

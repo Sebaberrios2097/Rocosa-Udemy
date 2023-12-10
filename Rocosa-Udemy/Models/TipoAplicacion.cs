@@ -6,6 +6,7 @@ namespace Rocosa_Udemy.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Nombre { get; set; }
+        [Required(ErrorMessage = "El nombre del tipo de aplicación es obligatorio.")]
+        public string? Nombre { get; set; }
     }
 }

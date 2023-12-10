@@ -7,8 +7,12 @@
 
 <form method="post" asp-action="Crear">
     <div class="border p-3">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+
         <div class="form-group row">
-            <h2 class="text-info pl-3">Nueva aplicacion</h2>
+            <h2 class="text-info pl-3">Nuevo tipo aplicación</h2>
         </div>
 
         <div class="container">
@@ -16,13 +20,14 @@
                 <div class="col-md-6">
                     <label asp-for="Nombre" class="form-label">Nombre aplicación</label>
                     <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <br />
         <div class="d-grid gap-2 d-md-block">
-            <button type="submit" class="btn btn-primary">Crear Nueva</button>
-            <a asp-controller="Categoria" asp-action="Index" class="btn btn-success">Regresar</a>
+            <button type="submit" class="btn btn-primary">Crear Nueva aplicación</button>
+            <a asp-controller="TipoAplicacion" asp-action="Index" class="btn btn-success">Regresar</a>
         </div>
 
 
@@ -30,4 +35,11 @@
     </div>
 
 </form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
 

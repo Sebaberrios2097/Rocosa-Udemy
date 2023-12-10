@@ -57,5 +57,50 @@ namespace Rocosa_Udemy.Controllers
         }
 
         // Post
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Editar(Categoria categoria)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categoria.Update(categoria);
+                _db.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(categoria);
+
+        }
+
+        // Get Eliminar
+        public IActionResult Eliminar(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Categoria.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // Post Eliminar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Eliminar(Categoria categoria)
+        {
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+            _db.Categoria.Remove(categoria);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace Rocosa_Udemy.Datos
         // Traer todos los modelos creados
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<TipoAplicacion> TipoAplicacion { get; set; }
+        public DbSet<Producto> Producto { get; set; }
     }
 }

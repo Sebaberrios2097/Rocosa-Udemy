@@ -11,7 +11,8 @@
             <h2 class="text-primary">Lista de aplicaciones</h2>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="TipoAplicacion" asp-action="Crear" class="btn btn-primary">Nueva aplicación</a>
+            <a asp-controller="TipoAplicacion" asp-action="Crear" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nueva aplicación</a>
         </div>
     </div>
     <br />
@@ -34,9 +35,8 @@
                     <tr>
                         <th width="50%">@item.Nombre</th>
                         <th class="text-center">
-                            <a asp-controller="" asp-action="" class="btn btn-primary">Detalles</a> |
-                            <a asp-controller="" asp-action="" class="btn btn-success">Editar</a> |
-                            <a asp-controller="" asp-action="" class="btn btn-danger">Eliminar</a>
+                            <a asp-controller="TipoAplicacion" asp-action="Editar" asp-route-Id="@item.Id" class="btn btn-primary"><i class="fas fa-edit"></i></a> |
+                            <a asp-controller="TipoAplicacion" asp-action="Eliminar" asp-route-Id="@item.Id" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </th>
                     </tr>
                 }
