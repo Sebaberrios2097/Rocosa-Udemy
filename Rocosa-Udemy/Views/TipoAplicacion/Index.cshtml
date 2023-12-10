@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Rocosa_Udemy.Models.TipoAplicacion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de aplicaciones</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="TipoAplicacion" asp-action="Crear" class="btn btn-primary">Nueva aplicación</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre Aplicacion
+                    </th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th width="50%">@item.Nombre</th>
+                        <th class="text-center">
+                            <a asp-controller="" asp-action="" class="btn btn-primary">Detalles</a> |
+                            <a asp-controller="" asp-action="" class="btn btn-success">Editar</a> |
+                            <a asp-controller="" asp-action="" class="btn btn-danger">Eliminar</a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No hay registros de aplicaciones</p>
+    }
+</div>
+
