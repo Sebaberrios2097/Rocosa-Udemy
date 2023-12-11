@@ -16,15 +16,15 @@ namespace Rocosa_Udemy.Models
         [Required(ErrorMessage = "Se requiere el precio del producto")]
         [Range(1, double.MaxValue, ErrorMessage = "El precio debe ser mayor a 0.")]
         public double Precio { get; set; }
-        public string ImagenUrl { get; set; }
+        public string? ImagenUrl { get; set; }
 
         // Foreign Key
         public int CategoriaId { get; set; }
         [ForeignKey("CategoriaId")]
-        public virtual Categoria Categoria { get; set; }
+        public virtual Categoria? Categoria { get; set; }
         public int TipoAplicacionId { get; set; }
         [ForeignKey("TipoAplicacionId")]
-        public virtual TipoAplicacion TipoAplicacion { get; set; }
+        public virtual TipoAplicacion? TipoAplicacion { get; set; }
 
     }
 }

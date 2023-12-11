@@ -1,0 +1,100 @@
+﻿@model Rocosa_Udemy.Models.Producto
+
+@{
+    var titulo = "¿Desea eliminar el producto?";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Eliminar">
+    <input asp-for="Id" hidden />
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <h2 class="text-danger">@titulo</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="NombreProducto">Nombre Producto</label>
+                            <input asp-for="NombreProducto" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Precio">Precio</label>
+                            <input asp-for="Precio" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="DescripcionCorta">Descripción Corta</label>
+                            <input asp-for="DescripcionCorta" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row" hidden>
+                        <div class="col-md-6">
+                            <label asp-for="DescripcionProducto">Descripción del producto</label>
+                            <textarea asp-for="DescripcionProducto" class="form-control summernote"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row" hidden>
+                        <div class="col-md-6">
+                            <label asp-for="ImagenUrl" class="form-label">Imagen</label>
+                            <input asp-for="ImagenUrl" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="CategoriaId" class="form-label">Categoria</label>
+                            <input asp-for="CategoriaId" hidden class="form-control">
+                            <input asp-for="Categoria.NombreCategoria" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="TipoAplicacionId" class="form-label">Tipo Aplicación</label>
+                            <input asp-for="TipoAplicacionId" hidden class="form-control">
+                            <input asp-for="TipoAplicacion.Nombre" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="d-grid gap-2 d-md-block">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                        <a asp-controller="Producto" asp-action="Index" class="btn btn-success">Volver</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-4">
+                @if (Model.Id != 0)
+                {
+                    <img src="@WC.ImagenRuta@Model.ImagenUrl" width="100%" style="border-radius:5px; border:1px solid #bbb;" />
+                }
+            </div>
+        </div>
+
+    </div>
+
+</form>
+
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
+
