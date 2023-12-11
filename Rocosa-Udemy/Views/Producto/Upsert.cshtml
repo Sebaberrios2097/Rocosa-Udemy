@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label asp-for="Producto.DescripcionProducto">Descripción del producto</label>
-                            <textarea asp-for="Producto.DescripcionProducto" class="form-control summernote"></textarea>
+                            <textarea asp-for="Producto.DescripcionProducto" class="form-control" id="editor"></textarea>
                             <span asp-validation-for="Producto.DescripcionProducto" class="text-danger"></span>
                         </div>
                     </div>
@@ -114,12 +114,19 @@
 
     <script>
 
-        $(document).ready(function () {
-            $('.summernote').summernote({
-                height: 250,
-                widht: 250
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
             });
-        });
+
+            // Librería summertnote para texto enriquecido
+        // $(document).ready(function () {
+        //     $('.summernote').summernote({
+        //         height: 250,
+        //         widht: 250
+        //     });
+        // });
 
         function validarImagen() {
             if (document.getElementById("imagenId").value == "") {
