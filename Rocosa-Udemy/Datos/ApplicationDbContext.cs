@@ -15,5 +15,6 @@ namespace Rocosa_Udemy.Datos
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<TipoAplicacion> TipoAplicacion { get; set; }
         public DbSet<Producto> Producto { get; set; }
+        public DbSet<UsuarioAplicacion> UsuarioAplicacion { get; set; }
     }
 }

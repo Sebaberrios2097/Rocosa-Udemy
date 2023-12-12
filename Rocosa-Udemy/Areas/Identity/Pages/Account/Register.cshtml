@@ -1,10 +1,14 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
 
-<h1>@ViewData["Title"]</h1>
+@if (User.IsInRole(Rocosa_Udemy.WC.AdminRole))
+{
+    <h1>Registrar un usuario Administrador</h1>
+}
+else
+{
+    <h1>Registrar</h1>
+}
 
 <div class="row">
     <div class="col-md-4">
@@ -13,9 +17,19 @@
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
+                <input asp-for="Input.NombreCompleto" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.NombreCompleto">Nombres</label>
+                <span asp-validation-for="Input.NombreCompleto" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
                 <label asp-for="Input.Email"></label>
                 <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="username" aria-required="true" />
+                <label asp-for="Input.PhoneNumber">Número de teléfono</label>
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
@@ -27,7 +41,16 @@
                 <label asp-for="Input.ConfirmPassword"></label>
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            @if (User.IsInRole(Rocosa_Udemy.WC.AdminRole))
+            {
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-warning">Registrar usuario administrador</button>
+            }
+            else
+            {
+                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrar</button>
+
+            }
+            
         </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
