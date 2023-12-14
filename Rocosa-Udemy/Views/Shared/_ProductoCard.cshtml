@@ -1,0 +1,31 @@
+﻿
+@model Rocosa_Udemy.Models.Producto
+
+
+<div class="col-lg-4 col-md-6 pb-4 filter @Model.Categoria.NombreCategoria.Replace(' ','_')">
+    <!-- Card-->
+    <div class="card bg-white rounded shadow-sm" style="border:1px solid #222">
+        <div class="card-body px-3 pt-3 pb-1 row">
+            <div class="col-7"><label class="float-left">@Model.NombreProducto</label></div>
+            <div class="col-5"><label class="float-right"><span class="text-info h5">@Model.Precio</span> / m &sup2;</label> </div>
+        </div>
+        <img class="card-img-top img-fluid d-block mx-auto mb-3" src="@WC.ImagenRuta@Model.ImagenUrl" alt="Imagen Card">
+        <div class="card-body p-1 px-3 row">
+            <div class="col-6">
+                <span class="badge p-2 border w-100 text-dark" style="background-color:lavenderblush">@Model.Categoria.NombreCategoria</span>
+            </div>
+            <div class="col-6 border-0">
+                <span class="badge p-2 border w-100 text-dark" style="background-color:aliceblue">@Model.TipoAplicacion.Nombre</span>
+            </div>
+            <div class="col-12 pt-2" style="font-size:13px; text-align:justify">
+                <p> @Model.DescripcionCorta</p>
+            </div>
+            <div class="col-12 p-1">
+                <a asp-action="Detalle" asp-route-Id="@Model.Id" class="btn btn-dark form-control btn-sm p-2" style="height:40px">Ver Detalle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
